@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.main {
+    border: black 3px solid;
+    padding: 25px;
+    background-color: orange;
+    width: 50%;
+}
