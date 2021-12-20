@@ -1,62 +1,83 @@
 var startButton = document.querySelector(".start-button"); //variable for start button
 var timerElement = document.querySelector(".timer-count"); //variable for timer
-var quizQuestion = document.querySelector(".main"); //variable for quiz section
+// var quizQuestion = document.querySelector(".container"); //variable for quiz section
+var questionEl = document.querySelector("#question");//grabs the question space <div>
+var answerButtons = document.querySelector("#ans-buttons"); //grabs the answer buttons (also grabs the answer...because of flex issue--could cause problems later)
 
 
-var correctAnswer = 0;
-var incorrectAnswer = 0;
-var currentQuestion = 0;  // positioning the questions
+var questionIndex; //This variable is for the index of questions when I go through them. It's set to undefined so it can be modified later.
+
+var correctAnswer = 0; // Will need to use this to add time to the timer
+var incorrectAnswer = 0; // Will need to use this to subtract time from the timer
+
+// var currentQuestion = 0;  // positioning the questions
 var question;
 
 
-var timer;
-var timerCount;
+var timer; //For timer to be set later
+var timerCount; //For timer to be set later
 
+// These are my questions put into an array of objects for easy access.
 var questions = [
     {
-        question1: "What does var mean?",
-        options: ["variable", "variation", "variegation"],
-        correct: "variable"
-    },
-    {
-        question2: "What is an array?",
-        options: ["colorful gems", "something", "a way to store multiple data types"],
-        correct: "test test test"
+        question: "What does var mean?",
+        options: [ 
+            {answer: "variable", correct: true},
+            {answer: "variation", correct: false},
+           {answer: "variegation", correct: false,} 
+]
     }
-];
-console.log(questions);
+]
+
+//     {
+//         question2: "What is an array?",
+//         options: ["colorful gems", "something", "a way to store multiple data types"],
+//         correct: "test test test"
+//     }
+// ];
 
 // The startQuiz function is called when the start button is clicked
 function startQuiz() {
-// var question = document.createElement("p");
-timerCount = 10;
-startButton.disabled = true;
-renderQuestions();//Need to find a way to bring up questions
-// document.body.appendChild(quizQuestion);
+questionIndex = 0; // position of question -- starts at first question
+timerCount = 30; // establishes the starting timer count
+startButton.disabled = true; // Used to prevent multiple start quiz clicks
+
+// The nextQuestion function is called to bring the user to the next question.
+nextQuestion()
+}
+
+// This function is used to move to the next question.
+function nextQuestion() {
+    //I call renderQuestions with arguments questions[questionIndex] to find the next question in the array.
+    renderQuestions(questions[questionIndex]);
 }
 
 
-function renderQuestions() {
-    quizQuestion.textContent = questions[0]
+// This function displays the questions in the <div> container.
+function renderQuestions(question) {
+    questionEl.textContent = question.question //questionEl is the location where we are writing the first question.
+
 }
 
 
+
+
+// Function for timer
 function startTimer() {
-    timerCount = 10;
-    timer = setInterval(function() {
+    timerCount = 30; //Sets timer count
+    timer = setInterval(function() { //This function starts the countdown.
         timerElement.textContent = timerCount + " seconds remaining...";
         timerCount--;
-        if(timerCount === 0) {
+        if(timerCount === 0) { //Prevents negative timer.
             clearInterval(timer);
         }
-    }, 1000);
+    }, 1000); //Counts down by increments of 1 second.
     
 
 }
-// startQuiz();
 
-startButton.addEventListener("click", startTimer);
-startButton.addEventListener("click", startQuiz);
+startButton.addEventListener("click", startTimer); //Starts startTimer function on button click
+startButton.addEventListener("click", startQuiz); //Starts startQuiz function on button click
 
 
 

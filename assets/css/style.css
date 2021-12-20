@@ -1,14 +1,77 @@
+/* Universal Styles */
+
 * {
     box-sizing: border-box;
+    font-family: monospace;
     margin: 0;
     padding: 0;
 }
 
 
+body {
+    background-color: aqua;
+}
 
-.main {
-    border: black 3px solid;
+header {
+    text-align: center;
+    
+    }
+
+/* Quiz Styles */
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;    
+} /* Note: this seems to center the questions simply */
+
+.container {
+    display: flex;
+    max-width: 50%;
+    width: 500px;
+    background-color: aquamarine;
+    border-radius: 10px;
+    border: solid lightblue 3px;
     padding: 25px;
-    background-color: orange;
-    width: 50%;
+    box-shadow: 0 0 8px 3px blue;
+}
+
+.question-container {
+    display: flex;
+}
+#question {
+    padding: 10px;
+}
+
+
+/* Button Styles */
+
+.flex-buttons {
+  display: flex;
+  align-content: space-around;
+  justify-content: space-evenly;
+  flex-direction: column;
+  padding: 10px;
+  align-self: auto;
+}
+.button {
+    padding: 5px 8px;
+    margin: 5px;
+    color: white;
+    border: 1px solid lightcyan;
+    background-color: teal;
+}
+
+.button:hover, .start-button:hover {
+    border: 1.5px solid blue;
+
+}
+
+.start-button {
+    padding: 5px 8px;
+    margin: 5px;
+    color: white;
+    border: 1px solid lightcyan;
+    background-color: teal;
 }

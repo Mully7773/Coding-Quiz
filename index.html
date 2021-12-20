@@ -10,17 +10,32 @@
 <body>
     <header>
         <h1>Coding Quiz</h1>
-        <button class="start-button">Start Quiz</button>
+        <!-- Start Button -id for javascript -->
+        <button id = "st-button" class="start-button">Start Quiz</button>
+<!-- Time Counter -->
+        <section>
+            <div class="timer-count">30</div>
+        </section> 
     </header>
+
+    <!-- Main Section - Quiz Section -->
     <main>
-       <section>
-           <div class="timer-count">10</div>
-           <!-- <h3>seconds remaining...</h3> -->
-       </section> 
-       <section>
-           <div class="container">
-               <p class="main"></p>
-           </div>
+        <!-- This container contains all elements -->
+        <div class="container">
+            <!-- <div id="question-container" class="hidden">
+                <div id="question">Question</div></div> -->
+              <!-- For the answer buttons -->
+                <div id="ans-buttons" class="flex-buttons">
+
+                    <!-- For the questions -->
+                <div id="question-container" class="hidden">
+                <div id="question">Question</div></div>
+                <button class="button">Answer 1</button>
+                <button class="button">Answer 2</button>
+                <button class="button">Answer 3</button>
+                <button class="button">Answer 4</button>
+            </div>
+        </div>
        </section>
 
 
