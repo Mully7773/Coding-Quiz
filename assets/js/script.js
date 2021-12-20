@@ -1,7 +1,8 @@
 var startButton = document.querySelector(".start-button"); //variable for start button
 var timerElement = document.querySelector(".timer-count"); //variable for timer
-// var quizQuestion = document.querySelector(".container"); //variable for quiz section
-var questionEl = document.querySelector("#question");//grabs the question space <div>
+var questionContainer = document.querySelector(".container"); //grabs the entire quiz container
+var questionElCont = document.querySelector("#question");//grabs the question itself <div>
+
 var answerButtons = document.querySelector("#ans-buttons"); //grabs the answer buttons (also grabs the answer...because of flex issue--could cause problems later)
 
 
@@ -29,6 +30,12 @@ var questions = [
     }
 ]
 
+for (let i=0; i<questions.length; i++) {
+    for(let j = 0; j < questions[i].length; j++) {
+        console.log(questions[i][j]);
+    }
+}
+
 //     {
 //         question2: "What is an array?",
 //         options: ["colorful gems", "something", "a way to store multiple data types"],
@@ -55,10 +62,33 @@ function nextQuestion() {
 
 // This function displays the questions in the <div> container.
 function renderQuestions(question) {
-    questionEl.textContent = question.question //questionEl is the location where we are writing the first question.
-
+    questionElCont.textContent = question.question //questionElCont is the location where we are writing the first question.
+    for(var i = 0; i < question.length; i++) {
+        options = []
+        var button = document.createElement('button')
+        button.textContent = question.question
+        answerButtons.appendChild(button);
+        console.log(button)
+    }
+    // questions.options.forEach(answer => {
+    //     var button = document.createElement('button')
+    //     button.innerText = answer.answer
+    //     if (answer.correct === true) {
+    //         button.dataset.correct = answer.correct
+    //     }
+    //     button.addEventListener('click', selectAnswer)
+    //     answerButtons.appendChild(button)
+    // })
 }
 
+// function renderAnswers() {
+//     for (i=0; i < questions.options.length; i++) {
+
+    
+//     answerButtons.textContent = questions.options
+//     }
+// }
+// console.log(renderAnswers())
 
 
 

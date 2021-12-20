@@ -24,7 +24,7 @@ main {
     align-items: center;
     justify-content: center;
     min-height: 100vh;    
-} /* Note: this seems to center the questions simply */
+}
 
 .container {
     display: flex;
