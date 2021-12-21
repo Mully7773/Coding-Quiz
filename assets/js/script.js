@@ -3,7 +3,7 @@ var timerElement = document.querySelector(".timer-count"); //variable for timer
 var questionContainer = document.querySelector(".container"); //grabs the entire quiz container
 var questionElCont = document.querySelector("#question");//grabs the question itself <div>
 
-var answerButtons = document.querySelector("#ans-buttons"); //grabs the answer buttons (also grabs the answer...because of flex issue--could cause problems later)
+var answerButtons = document.querySelector("#ans-buttons"); //grabs the answer buttons (used to grab the answer...because of flex issue--could cause problems later)
 
 
 
@@ -29,23 +29,26 @@ var questions = [
            {answer: "variegation", correct: false,},
            {answer: "variety", correct: false}
 ]
+    },
+
+    {
+        question: "What do we call this text style: myFunction?",
+        options: [ 
+            {answer: "snake case", correct: false},
+            {answer: "dog case", correct: false},
+           {answer: "camel case", correct: true,},
+           {answer: "bird case", correct: false}
+]
     }
+
 ]
 
-for (let i=0; i<questions.length; i++) {
-    for(let j = 0; j < questions[i].length; j++) {
-        console.log(questions[i][j]);
-    }
-}
-
-
-
-//     {
-//         question2: "What is an array?",
-//         options: ["colorful gems", "something", "a way to store multiple data types"],
-//         correct: "test test test"
+// for (let i=0; i<questions.length; i++) {
+//     for(let j = 0; j < questions[i].length; j++) {
+//         console.log(questions[i][j]);
 //     }
-// ];
+// }
+
 
 // The startQuiz function is called when the start button is clicked
 function startQuiz() {
@@ -54,8 +57,6 @@ timerCount = 30; // establishes the starting timer count
 startButton.disabled = true; // Used to prevent multiple start quiz clicks
 // The nextQuestion function is called to bring the user to the next question.
 nextQuestion()
-
-
 }
 
 // This function is used to move to the next question.
@@ -69,19 +70,19 @@ function nextQuestion() {
 function renderQuestions(question) {
     questionElCont.textContent = question.question //questionElCont is the location where we are writing the first question.
     question.options.forEach(answer => {
-        let button = document.createElement('button')
-        button.textContent = answer.answer
+        var button = document.createElement('button') //creates a button for every option
+        button.textContent = answer.answer //adds text to option
         
-        button.addEventListener('click', selectAnswer)
-        button.classList.add('button')
-        // while (answerButtons.firstChild){
+        // button.addEventListener('click', selectAnswer) //makes buttons clickable
+        button.classList.add('button') //adds the first styles to the buttons
+        // while (answerButtons.firstChild){    //the while loop loops as long as some condition is true
         //     answerButtons.removeChild(answerButtons.firstChild)
         //   }
         answerButtons.appendChild(button)
     })
 }
 
-    function selectAnswer(e) {
+    function selectAnswer() {
 
     }
 
