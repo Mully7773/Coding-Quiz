@@ -2,7 +2,7 @@ var startButton = document.querySelector(".start-button"); //variable for start 
 var timerElement = document.querySelector(".timer-count"); //variable for timer
 var questionContainer = document.querySelector(".container"); //grabs the entire quiz container
 var questionElCont = document.querySelector("#question");//grabs the question itself <div>
-
+var submitForm = document.querySelector("#form"); // grabs the form
 var answerButtons = document.querySelector("#ans-buttons"); //grabs the answer buttons (used to grab the answer...because of flex issue--could cause problems later)
 
 
@@ -55,6 +55,7 @@ function startQuiz() {
 questionIndex = 0; // position of question -- starts at first question
 timerCount = 30; // establishes the starting timer count
 startButton.disabled = true; // Used to prevent multiple start quiz clicks
+questionContainer.classList.remove("hidden")
 // The nextQuestion function is called to bring the user to the next question.
 nextQuestion()
 }
@@ -62,18 +63,25 @@ nextQuestion()
 // This function is used to move to the next question.
 function nextQuestion() {
     //I call renderQuestions with arguments questions[questionIndex] to find the next question in the array.
+    if (questionIndex === questions.length) {
+
+    }
     renderQuestions(questions[questionIndex]);
 }
 
 
 // This function displays the questions in the <div> container.
 function renderQuestions(question) {
-    questionElCont.textContent = question.question //questionElCont is the location where we are writing the first question.
+    questionElCont.textContent = question.question
+    while (answerButtons.firstChild){    //the while loop loops as long as some condition is true
+        answerButtons.removeChild(answerButtons.firstChild)
+      }
+    //questionElCont is the location where we are writing the first question.
     question.options.forEach(answer => {
         var button = document.createElement('button') //creates a button for every option
         button.textContent = answer.answer //adds text to option
         
-        // button.addEventListener('click', selectAnswer) //makes buttons clickable
+        button.addEventListener('click', selectAnswer) //makes buttons clickable
         button.classList.add('button') //adds the first styles to the buttons
         // while (answerButtons.firstChild){    //the while loop loops as long as some condition is true
         //     answerButtons.removeChild(answerButtons.firstChild)
@@ -82,9 +90,26 @@ function renderQuestions(question) {
     })
 }
 
-    function selectAnswer() {
-
+    function selectAnswer(event) {
+        var userChoice = event.target.textContent;
+        // compare the button clicked against the correct answer
+        // var userArray = options.filter()
+        var correctOption = questions[questionIndex].options.filter(function(option) {
+            return option.correct
+        })[0].answer;
+        if (!userChoice === correctOption) {
+            timerCount -= 5;
+        }
+        questionIndex++;
+        nextQuestion();
     }
+
+submitForm.addEventListener("submit", function(event){
+    event.preventDefault();
+    
+})
+
+
 
     // for (let i=0; i<questions.length; i++) {
     //     for(let j = 0; j < questions[i].length; j++) {

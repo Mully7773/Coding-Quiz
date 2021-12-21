@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,46 +8,58 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
     <title>Coding Quiz</title>
 </head>
+
 <body>
     <header>
         <h1>Coding Quiz</h1>
         <!-- Start Button -id for javascript -->
-        <button id = "st-button" class="start-button">Start Quiz</button>
-<!-- Time Counter -->
+        <button id="st-button" class="start-button">Start Quiz</button>
+        <!-- Time Counter -->
         <section>
             <div class="timer-count">30</div>
-        </section> 
+        </section>
     </header>
 
     <!-- Main Section - Quiz Section -->
     <main>
         <!-- This container contains all elements -->
-        <div class="container">
+        <div class="container hidden">
             <!-- <div id="question-container" class="hidden">
                 <div id="question">Question</div></div> -->
-              <!-- For the answer buttons -->
-              <div id="question-container">
-                <div id="question">Question</div></div>
-                <div id="ans-buttons" class="flex-buttons">
+            <!-- For the answer buttons -->
+            <div id="question-container">
+                <div id="question">Question</div>
+            </div>
+            <div id="ans-buttons" class="flex-buttons">
 
-                    <!-- For the questions -->
-                
+                <!-- For the questions -->
+
                 <button class="button">Answer 1</button>
                 <button class="button">Answer 2</button>
                 <button class="button">Answer 3</button>
                 <button class="button">Answer 4</button>
             </div>
         </div>
-       </section>
+        <div class = form>
+            <form id="form">
+                <label for="initial">Initial:</label><br>
+                <input type="text" id="initial" name="initial" value="initial"><br>
+                <button>Submit</button>
+            </form>
 
 
 
-</main>
+        </div>
 
-<footer>
 
-</footer>
 
-<script src="assets/js/script.js"></script>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="assets/js/script.js"></script>
 </body>
+
 </html>

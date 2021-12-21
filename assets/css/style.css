@@ -37,6 +37,10 @@ main {
     box-shadow: 0 0 8px 3px blue;
 }
 
+.hidden {
+    display: none;
+}
+
 .question-container {
     display: flex;
 }
