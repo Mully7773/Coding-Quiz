@@ -4,6 +4,7 @@ var questionContainer = document.querySelector(".container"); //grabs the entire
 var questionElCont = document.querySelector("#question");//grabs the question itself <div>
 var submitForm = document.querySelector("#form"); // grabs the form
 var answerButtons = document.querySelector("#ans-buttons"); //grabs the answer buttons (used to grab the answer...because of flex issue--could cause problems later)
+var initials = document.querySelector("#initial").value
 
 
 
@@ -104,11 +105,41 @@ function renderQuestions(question) {
         nextQuestion();
     }
 
+    function store(){
+        // localStorage.clear();
+        var initials = document.querySelector("#initial").value;
+        // var currentTime = timerCount.value
+
+        var userInitial = {
+            initials: initials
+        }
+        
+        window.localStorage.setItem(initials, JSON.stringify(userInitial));
+        
+        
+        }
+
+    function retrieve() {
+        var initials = document.querySelector("#initial").value;
+        var records = window.localStorage.getItem(initials);
+        var pg = document.createElement("p");
+        var information = document.createTextNode(records);
+        pg.appendChild(information);
+        var element = document.querySelector("#retrieve");
+        element.appendChild(pg);
+    }
+
 submitForm.addEventListener("submit", function(event){
     event.preventDefault();
-    
+    store();
+    // retrieve()
+    // var initials = document.querySelector("#initial").value
+    // initials.reset();
 })
 
+
+
+// submitForm.classList.remove("hidden") after the quiz is finished
 
 
     // for (let i=0; i<questions.length; i++) {
