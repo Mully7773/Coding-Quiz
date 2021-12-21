@@ -6,6 +6,7 @@ var questionElCont = document.querySelector("#question");//grabs the question it
 var answerButtons = document.querySelector("#ans-buttons"); //grabs the answer buttons (also grabs the answer...because of flex issue--could cause problems later)
 
 
+
 var questionIndex; //This variable is for the index of questions when I go through them. It's set to undefined so it can be modified later.
 
 var correctAnswer = 0; // Will need to use this to add time to the timer
@@ -25,7 +26,8 @@ var questions = [
         options: [ 
             {answer: "variable", correct: true},
             {answer: "variation", correct: false},
-           {answer: "variegation", correct: false,} 
+           {answer: "variegation", correct: false,},
+           {answer: "variety", correct: false}
 ]
     }
 ]
@@ -35,6 +37,8 @@ for (let i=0; i<questions.length; i++) {
         console.log(questions[i][j]);
     }
 }
+
+
 
 //     {
 //         question2: "What is an array?",
@@ -48,9 +52,10 @@ function startQuiz() {
 questionIndex = 0; // position of question -- starts at first question
 timerCount = 30; // establishes the starting timer count
 startButton.disabled = true; // Used to prevent multiple start quiz clicks
-
 // The nextQuestion function is called to bring the user to the next question.
 nextQuestion()
+
+
 }
 
 // This function is used to move to the next question.
@@ -63,13 +68,36 @@ function nextQuestion() {
 // This function displays the questions in the <div> container.
 function renderQuestions(question) {
     questionElCont.textContent = question.question //questionElCont is the location where we are writing the first question.
-    for(var i = 0; i < question.length; i++) {
-        options = []
-        var button = document.createElement('button')
-        button.textContent = question.question
-        answerButtons.appendChild(button);
-        console.log(button)
+    question.options.forEach(answer => {
+        let button = document.createElement('button')
+        button.textContent = answer.answer
+        
+        button.addEventListener('click', selectAnswer)
+        button.classList.add('button')
+        // while (answerButtons.firstChild){
+        //     answerButtons.removeChild(answerButtons.firstChild)
+        //   }
+        answerButtons.appendChild(button)
+    })
+}
+
+    function selectAnswer(e) {
+
     }
+
+    // for (let i=0; i<questions.length; i++) {
+    //     for(let j = 0; j < questions[i].length; j++) {
+    //         console.log(questions[i][j]);
+
+    //     answerButtons.textContent = questions[questionIndex].options.answer
+    //     // var button = document.createElement('button')
+    //     questionElCont.textContent = question.question
+    //     answerButtons.appendChild(button);
+    //     console.log(button)
+    //     }
+    
+
+
     // questions.options.forEach(answer => {
     //     var button = document.createElement('button')
     //     button.innerText = answer.answer
@@ -79,7 +107,7 @@ function renderQuestions(question) {
     //     button.addEventListener('click', selectAnswer)
     //     answerButtons.appendChild(button)
     // })
-}
+// }
 
 // function renderAnswers() {
 //     for (i=0; i < questions.options.length; i++) {
@@ -108,6 +136,17 @@ function startTimer() {
 
 startButton.addEventListener("click", startTimer); //Starts startTimer function on button click
 startButton.addEventListener("click", startQuiz); //Starts startQuiz function on button click
+
+
+
+
+// answerButtons.textContent = questions[questionIndex].options[0].answer
+//     answerButtons.textContent = questions[questionIndex].options[0].answer
+//     // questions.options.forEach(function(questions) {
+//     //     var button = document.createElement('button')
+//     //     button.textContent = questions.options.answer
+//     //     answerButtons.appendChild(button);
+//     // })
 
 
 
