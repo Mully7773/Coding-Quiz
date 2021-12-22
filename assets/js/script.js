@@ -10,17 +10,11 @@ var answerButtons = document.querySelector("#ans-buttons"); //grabs the answer b
 
 var questionIndex; //This variable is for the index of questions when I go through them. It's set to undefined so it can be modified later.
 
-var correctAnswer = 0; // Will need to use this to add time to the timer
-var incorrectAnswer = 0; // Will need to use this to subtract time from the timer
-
-// var currentQuestion = 0;  // positioning the questions
-// var question;
-
 
 var timer; //For timer to be set later
 var timerCount; //For timer to be set later
 
-// These are my questions put into an array of objects for easy access.
+
 var questions = [
     {
         question: "What does var mean?",
@@ -44,14 +38,8 @@ var questions = [
 
 ]
 
-// for (let i=0; i<questions.length; i++) {
-//     for(let j = 0; j < questions[i].length; j++) {
-//         console.log(questions[i][j]);
-//     }
-// }
 
 
-// The startQuiz function is called when the start button is clicked
 function startQuiz() {
 questionIndex = 0; // position of question -- starts at first question
 timerCount = 30; // establishes the starting timer count
@@ -67,10 +55,9 @@ function nextQuestion() {
     if (questionIndex === questions.length) {
         questionContainer.classList.add("hidden");
         submitForm.classList.remove("hidden");
-        clearInterval(timer); // stops timer but also prevents wrong answer subtraction but not in local storage
+        clearInterval(timer);
     }
     renderQuestions(questions[questionIndex]);
-    
 }
 
 
@@ -80,24 +67,18 @@ function renderQuestions(question) {
     while (answerButtons.firstChild){    //the while loop loops as long as some condition is true
         answerButtons.removeChild(answerButtons.firstChild)
       }
-    //questionElCont is the location where we are writing the first question.
     question.options.forEach(answer => {
         var button = document.createElement('button') //creates a button for every option
         button.textContent = answer.answer //adds text to option
         
         button.addEventListener('click', selectAnswer) //makes buttons clickable
         button.classList.add('button') //adds the first styles to the buttons
-        // while (answerButtons.firstChild){    //the while loop loops as long as some condition is true
-        //     answerButtons.removeChild(answerButtons.firstChild)
-        //   }
         answerButtons.appendChild(button)
     })
 }
 
     function selectAnswer(event) {
         var userChoice = event.target.textContent;
-        // compare the button clicked against the correct answer
-        // var userArray = options.filter()
         var correctOption = questions[questionIndex].options.filter(function(option) {
             return option.correct
         })[0].answer;
@@ -108,8 +89,8 @@ function renderQuestions(question) {
         nextQuestion();
     }
 
+    //Local Storage
     function store(){
-        // var currentTime = timerCount;
         var initials = document.querySelector("#initial").value;
         var currentTime = timerCount
 
@@ -117,16 +98,12 @@ function renderQuestions(question) {
             currentTime: currentTime,
             initials: initials,
         }
-        
         window.localStorage.setItem(initials, JSON.stringify(userInitial));
-        
-        
         }
   
 
     function retrieve() {
         var initials = document.querySelector("#initial").value;
-        // var currentTime = timerCount;
         var records = window.localStorage.getItem(initials);
         var pg = document.createElement("p");
         var information = document.createTextNode(records);
@@ -138,72 +115,19 @@ function renderQuestions(question) {
 submitForm.addEventListener("submit", function(event){
     event.preventDefault();
     store();
-    newWindow();
-    // window.location.href = "highscores.html";
+    // newWindow(); 
+
+    //NOTE: The function above opens my new window, but I was unable to get the scores posted here...I apologize.
+
+
     retrieve()
-    // var initials = document.querySelector("#initial").value
-    // initials.reset();
 })
 
-function newWindow() {
-    window.location.href = "highscores.html";
-//     var initials = document.querySelector("#initial").value;
-// window.localStorage.getItem(initials)
-
-
-
-
-    
-    // var records = window.localStorage.getItem(initials,);
-    //     var pg = document.createElement("p");
-    //     var information = document.createTextNode(records);
-    //     pg.appendChild(information);
-    //     var element = document.querySelector("#retrieve");
-    //     element.appendChild(pg);
-    
-//     retrieve();
-}
-
-// var initials = document.querySelector("#initial").value;
-// console.log(window.localStorage.getItem(initials))
-
-
- 
-
-
-    // for (let i=0; i<questions.length; i++) {
-    //     for(let j = 0; j < questions[i].length; j++) {
-    //         console.log(questions[i][j]);
-
-    //     answerButtons.textContent = questions[questionIndex].options.answer
-    //     // var button = document.createElement('button')
-    //     questionElCont.textContent = question.question
-    //     answerButtons.appendChild(button);
-    //     console.log(button)
-    //     }
-    
-
-
-    // questions.options.forEach(answer => {
-    //     var button = document.createElement('button')
-    //     button.innerText = answer.answer
-    //     if (answer.correct === true) {
-    //         button.dataset.correct = answer.correct
-    //     }
-    //     button.addEventListener('click', selectAnswer)
-    //     answerButtons.appendChild(button)
-    // })
+// function newWindow() {
+//     window.location.href = "highscores.html";
+// //     var initials = document.querySelector("#initial").value;
+// // window.localStorage.getItem(initials)
 // }
-
-// function renderAnswers() {
-//     for (i=0; i < questions.options.length; i++) {
-
-    
-//     answerButtons.textContent = questions.options
-//     }
-// }
-// console.log(renderAnswers())
-
 
 
 // Function for timer
@@ -222,44 +146,3 @@ function startTimer() {
 
 startButton.addEventListener("click", startTimer); //Starts startTimer function on button click
 startButton.addEventListener("click", startQuiz); //Starts startQuiz function on button click
-
-
-
-
-// answerButtons.textContent = questions[questionIndex].options[0].answer
-//     answerButtons.textContent = questions[questionIndex].options[0].answer
-//     // questions.options.forEach(function(questions) {
-//     //     var button = document.createElement('button')
-//     //     button.textContent = questions.options.answer
-//     //     answerButtons.appendChild(button);
-//     // })
-
-
-
-
-
-
-
-
-// var index = 0;
-// var currentImage;
-
-// var images = [
-//   "https://picsum.photos/300/200",
-//   "https://picsum.photos/300/201",
-//   "https://picsum.photos/300/202",
-//   "https://picsum.photos/300/203"
-// ];
-
-// carousel.style.backgroundImage = "url('https://picsum.photos/300/200')";
-
-// function navigate(direction) {
-//   index = index + direction;
-//   if (index < 0) { 
-//     index = images.length - 1; 
-//   } else if (index > images.length - 1) { 
-//     index = 0;
-//   }
-//   currentImage = images[index];  //I would do questions[index]
-//   carousel.style.backgroundImage = "url('" + currentImage + "')";
-// }
