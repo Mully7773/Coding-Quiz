@@ -40,7 +40,8 @@ In this project, I used HTML, CSS, and JavaScript to display quiz questions. Use
 
 ## GitPages Link:
 
-
+You can find my website here:
+https://mully7773.github.io/Coding-Quiz/
 
 ## Author:
 
