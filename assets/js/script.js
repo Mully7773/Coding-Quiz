@@ -4,7 +4,7 @@ var questionContainer = document.querySelector(".container"); //grabs the entire
 var questionElCont = document.querySelector("#question");//grabs the question itself <div>
 var submitForm = document.querySelector("#form"); // grabs the form
 var answerButtons = document.querySelector("#ans-buttons"); //grabs the answer buttons (used to grab the answer...because of flex issue--could cause problems later)
-var initials = document.querySelector("#initial").value
+// var initials = document.querySelector("#initial").value
 
 
 
@@ -65,9 +65,12 @@ nextQuestion()
 function nextQuestion() {
     //I call renderQuestions with arguments questions[questionIndex] to find the next question in the array.
     if (questionIndex === questions.length) {
-
+        questionContainer.classList.add("hidden");
+        submitForm.classList.remove("hidden");
+        clearInterval(timer); // stops timer but also prevents wrong answer subtraction but not in local storage
     }
     renderQuestions(questions[questionIndex]);
+    
 }
 
 
@@ -98,7 +101,7 @@ function renderQuestions(question) {
         var correctOption = questions[questionIndex].options.filter(function(option) {
             return option.correct
         })[0].answer;
-        if (!userChoice === correctOption) {
+        if (userChoice !== correctOption) {
             timerCount -= 5;
         }
         questionIndex++;
@@ -107,17 +110,21 @@ function renderQuestions(question) {
 
     function store(){
         // localStorage.clear();
+        // var currentTime = document.querySelector("#time").value;
+        var currentTime = timerCount;
         var initials = document.querySelector("#initial").value;
-        // var currentTime = timerCount.value
+        // var currentTime = timerCount
 
         var userInitial = {
-            initials: initials
+            currentTime: currentTime,
+            initials: initials,
         }
         
         window.localStorage.setItem(initials, JSON.stringify(userInitial));
         
         
         }
+  
 
     function retrieve() {
         var initials = document.querySelector("#initial").value;
@@ -132,14 +139,21 @@ function renderQuestions(question) {
 submitForm.addEventListener("submit", function(event){
     event.preventDefault();
     store();
-    // retrieve()
+    newWindow();
+    // window.location.href = "highscores.html";
+    retrieve()
     // var initials = document.querySelector("#initial").value
     // initials.reset();
 })
 
+// function newWindow() {
+//     window.location.href = "highscores.html";
+//     store()
+//     retrieve();
+// }
 
 
-// submitForm.classList.remove("hidden") after the quiz is finished
+ 
 
 
     // for (let i=0; i<questions.length; i++) {

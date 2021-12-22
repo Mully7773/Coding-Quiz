@@ -79,3 +79,13 @@ main {
     border: 1px solid lightcyan;
     background-color: teal;
 }
+
+.timer-count {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+aside {
+    font-size: 16px;
+   
+}

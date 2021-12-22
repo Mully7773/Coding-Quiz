@@ -13,11 +13,14 @@
     <header>
         <h1>Coding Quiz</h1>
         <!-- Start Button -id for javascript -->
+        <hr>
         <button id="st-button" class="start-button">Start Quiz</button>
         <!-- Time Counter -->
         <section>
-            <div class="timer-count">30</div>
+            <div id="time" class="timer-count">30</div>
         </section>
+        <br>
+        <aside><p>Five seconds will be deducted from the timer for every wrong answer selection.</p></aside>
     </header>
 
     <!-- Main Section - Quiz Section -->
@@ -40,8 +43,8 @@
                 <button class="button">Answer 4</button>
             </div>
         </div>
-        <div class = form>
-            <form id="form">
+        <div class = "form">
+            <form class="hidden" id="form">
                 <label id="userInitial" for="initial">Initial:</label><br>
                 <input type="text" id="initial" name="initial" value="initial"><br>
                 <button>Submit</button>
