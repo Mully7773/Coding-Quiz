@@ -14,7 +14,7 @@ var correctAnswer = 0; // Will need to use this to add time to the timer
 var incorrectAnswer = 0; // Will need to use this to subtract time from the timer
 
 // var currentQuestion = 0;  // positioning the questions
-var question;
+// var question;
 
 
 var timer; //For timer to be set later
@@ -109,11 +109,9 @@ function renderQuestions(question) {
     }
 
     function store(){
-        // localStorage.clear();
-        // var currentTime = document.querySelector("#time").value;
-        var currentTime = timerCount;
+        // var currentTime = timerCount;
         var initials = document.querySelector("#initial").value;
-        // var currentTime = timerCount
+        var currentTime = timerCount
 
         var userInitial = {
             currentTime: currentTime,
@@ -128,6 +126,7 @@ function renderQuestions(question) {
 
     function retrieve() {
         var initials = document.querySelector("#initial").value;
+        // var currentTime = timerCount;
         var records = window.localStorage.getItem(initials);
         var pg = document.createElement("p");
         var information = document.createTextNode(records);
@@ -146,11 +145,27 @@ submitForm.addEventListener("submit", function(event){
     // initials.reset();
 })
 
-// function newWindow() {
-//     window.location.href = "highscores.html";
-//     store()
+function newWindow() {
+    window.location.href = "highscores.html";
+//     var initials = document.querySelector("#initial").value;
+// window.localStorage.getItem(initials)
+
+
+
+
+    
+    // var records = window.localStorage.getItem(initials,);
+    //     var pg = document.createElement("p");
+    //     var information = document.createTextNode(records);
+    //     pg.appendChild(information);
+    //     var element = document.querySelector("#retrieve");
+    //     element.appendChild(pg);
+    
 //     retrieve();
-// }
+}
+
+// var initials = document.querySelector("#initial").value;
+// console.log(window.localStorage.getItem(initials))
 
 
  

@@ -8,8 +8,17 @@
 </head>
 <body>
     <h1>High Scores</h1>
+    Welcome... <span id="result"></span>
+<script>
+    
+function hello () {
+    document.getElementbyId("result").innerHTML=localStorage.getItem("initials");
+}
+hello();
+// console.log(localStorage.getItem("initials"));
 
-
+</script>
+   
     <script src="assets/js/script.js"></script>
 </body>
 </html>
