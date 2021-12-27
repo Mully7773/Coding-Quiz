@@ -21,6 +21,9 @@
         </section>
         <br>
         <aside><p>Five seconds will be deducted from the timer for every wrong answer selection.</p></aside>
+        <div class="highscores">
+            <a href="./highscores.html"><h3>View Highscores</h3></a>
+        </div>
     </header>
 
     <!-- Main Section - Quiz Section -->
@@ -43,10 +46,10 @@
             </div>
         </div>
         <div class = "form">
-            <form action="highscores.html" class="hidden" id="form">
+            <form class="hidden" id="form">
                 <label id="userInitial" for="initial">Initial:</label><br>
-                <input type="text" id="initial" name="initial" value="initial"><br>
-                <button>Submit</button>
+                <input type="text" id="initial" name="initial" value=""><br>
+                <button id="submission">Submit</button>
                 <div id="retrieve"></div>
             </form>
 
