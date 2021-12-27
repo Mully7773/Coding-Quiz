@@ -170,6 +170,10 @@ submitButton.addEventListener("click", function(event) {
     renderScores()
 });
 
+var finalButton = document.querySelector("#displayHighScores");
+
+
+
 function renderScores() {
     var lastScore = JSON.parse(localStorage.getItem("highscores"));
     if (lastScore !== null) {
@@ -177,6 +181,11 @@ function renderScores() {
         " received a score of " + lastScore.currentTime
     }
 }
+
+// finalButton.addEventListener("click", function(event) {
+//     renderScores(event);
+// })
+// finalButton.addEventListener("click", renderScores);
 
 
 startButton.addEventListener("click", startTimer); //Starts startTimer function on button click
