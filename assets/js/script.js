@@ -4,8 +4,8 @@ var questionContainer = document.querySelector(".container"); //grabs the entire
 var questionElCont = document.querySelector("#question");//grabs the question itself <div>
 var submitForm = document.querySelector("#form"); // grabs the form
 var answerButtons = document.querySelector("#ans-buttons"); //grabs the answer buttons (used to grab the answer...because of flex issue--could cause problems later)
-// var initials = document.querySelector("#initial").value
-var submitButton = document.querySelector("submission");
+var initials = document.querySelector("#initial").value
+var submitButton = document.querySelector("#submission");
 
 
 
@@ -91,43 +91,43 @@ function renderQuestions(question) {
     }
 
    // Local Storage
-    function store(){
-        var initials = document.querySelector("#initial").value.trim();
-        var currentTime = timerCount
+//     function store(){
+//         var initials = document.querySelector("#initial").value.trim();
+//         var currentTime = timerCount
 
-        var userInitial = {
-            currentTime: currentTime,
-            initials: initials,
-        }
-        console.log(userInitial);
-        window.localStorage.setItem(initials, JSON.stringify(userInitial));
-        // window.location.href = "highscores.html";
-        }
+//         var userInitial = {
+//             currentTime: currentTime,
+//             initials: initials,
+//         }
+//         console.log(userInitial);
+//         window.localStorage.setItem(initials, JSON.stringify(userInitial));
+//         // window.location.href = "highscores.html";
+//         }
   
 
-    function retrieve() {
-        var initials = document.querySelector("#initial").value;
-        var records = window.localStorage.getItem(initials);
-        // console.log(records)
-        // console.log(records.currentTime)
-        var pg = document.createElement("p");
-        var information = document.createTextNode(records);
-        pg.appendChild(information);
-        var element = document.querySelector("#retrieve");
-        element.appendChild(pg);
-    }
+//     function retrieve() {
+//         var initials = document.querySelector("#initial").value;
+//         var records = window.localStorage.getItem(initials);
+//         // console.log(records)
+//         // console.log(records.currentTime)
+//         var pg = document.createElement("p");
+//         var information = document.createTextNode(records);
+//         pg.appendChild(information);
+//         var element = document.querySelector("#retrieve");
+//         element.appendChild(pg);
+//     }
 
-submitForm.addEventListener("submit", function(event){
+// submitForm.addEventListener("submit", function(event){
   
-    event.preventDefault();
-    store();
-    // newWindow(); 
+//     event.preventDefault();
+//     store();
+//     // newWindow(); 
 
-    //NOTE: The function above opens my new window, but I was unable to get the scores posted here...I apologize.
+//     //NOTE: The function above opens my new window, but I was unable to get the scores posted here...I apologize.
 
 
-    retrieve()
-})
+//     retrieve()
+// })
 
 function newWindow() {
     window.location.href = "highscores.html";
@@ -150,6 +150,33 @@ function startTimer() {
 
 }
 
+
+submitButton.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    var initials = document.querySelector("#initial").value;
+    var currentTime = timerCount
+
+    var highscores = {
+
+
+        initials: initials,
+        currentTime: currentTime
+        
+    };
+
+    var highscore = localStorage.setItem("highscores", JSON.stringify(highscores));
+
+    renderScores()
+});
+
+function renderScores() {
+    var lastScore = JSON.parse(localStorage.getItem("highscores"));
+    if (lastScore !== null) {
+        document.querySelector(".message").textContent = lastScore.initials +
+        " received a score of " + lastScore.currentTime
+    }
+}
 
 
 startButton.addEventListener("click", startTimer); //Starts startTimer function on button click

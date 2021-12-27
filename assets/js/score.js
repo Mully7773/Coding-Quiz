@@ -1,9 +1,3 @@
-// function displayHighScores() {
-// var highscores = JSON.parse(window.localStorage.getItem("initials"))
-
-
-
-
 function retrieve() {
     var records = JSON.parse(window.localStorage.getItem("initials"));
     var pg = document.createElement("p");
