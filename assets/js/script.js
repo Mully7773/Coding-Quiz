@@ -90,44 +90,6 @@ function renderQuestions(question) {
         nextQuestion();
     }
 
-   // Local Storage
-//     function store(){
-//         var initials = document.querySelector("#initial").value.trim();
-//         var currentTime = timerCount
-
-//         var userInitial = {
-//             currentTime: currentTime,
-//             initials: initials,
-//         }
-//         console.log(userInitial);
-//         window.localStorage.setItem(initials, JSON.stringify(userInitial));
-//         // window.location.href = "highscores.html";
-//         }
-  
-
-//     function retrieve() {
-//         var initials = document.querySelector("#initial").value;
-//         var records = window.localStorage.getItem(initials);
-//         // console.log(records)
-//         // console.log(records.currentTime)
-//         var pg = document.createElement("p");
-//         var information = document.createTextNode(records);
-//         pg.appendChild(information);
-//         var element = document.querySelector("#retrieve");
-//         element.appendChild(pg);
-//     }
-
-// submitForm.addEventListener("submit", function(event){
-  
-//     event.preventDefault();
-//     store();
-//     // newWindow(); 
-
-//     //NOTE: The function above opens my new window, but I was unable to get the scores posted here...I apologize.
-
-
-//     retrieve()
-// })
 
 function newWindow() {
     window.location.href = "highscores.html";
@@ -182,10 +144,7 @@ function renderScores() {
     }
 }
 
-// finalButton.addEventListener("click", function(event) {
-//     renderScores(event);
-// })
-// finalButton.addEventListener("click", renderScores);
+
 
 
 startButton.addEventListener("click", startTimer); //Starts startTimer function on button click
